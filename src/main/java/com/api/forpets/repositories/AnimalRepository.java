@@ -1,4 +1,4 @@
-package com.api.forpets.repository;
+package com.api.forpets.repositories;
 
 import com.api.forpets.models.AnimalModel;
 import org.springframework.data.jpa.repository.JpaRepository;

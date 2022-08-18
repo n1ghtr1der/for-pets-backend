@@ -1,11 +1,15 @@
 package com.api.forpets.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "TB_ANIMAL")
-public class AnimalModel {
+public class AnimalModel implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -14,8 +18,10 @@ public class AnimalModel {
     @Column(length = 30)
     private  String breed;
     @Column(nullable = false)
+    @NotNull(message = "Weight can't be null!")
     private double weight;
     @Column(nullable = false)
+    @NotBlank(message = "Image URL is necessary.")
     private String imageURL;
     @Column
     private Date dateOfBirth;
@@ -23,9 +29,11 @@ public class AnimalModel {
     private Boolean vaccinated;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotBlank(message = "Gender is necessary!")
     private AnimalGenderEnum gender;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @NotBlank(message = "Specie is necessary!")
     private AnimalSpecieEnum specie;
 
     public Long getId() {
