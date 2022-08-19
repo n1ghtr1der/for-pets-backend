@@ -39,12 +39,12 @@ public class AnimalService {
         return animalRepository.findBySpecie(AnimalSpecieEnum.valueOf(specie));
     }
 
-    public List<AnimalModel> findByWeight(double weight) {
-        return animalRepository.findByWeight(weight);
+    public List<AnimalModel> findByWeight(double min, double max) {
+        return animalRepository.findByWeightIsBetween(min, max);
     }
 
     @Transactional(rollbackFor = {Exception.class, Throwable.class})
     public void delete(Long id) {
-        animalRepository.deleteByAnimalId(id);
+        animalRepository.deleteById(id);
     }
 }
