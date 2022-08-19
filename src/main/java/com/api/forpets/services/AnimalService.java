@@ -22,10 +22,10 @@ public class AnimalService {
     @Transactional(rollbackFor = {Exception.class, Throwable.class})
     public AnimalModel addAnimal(AnimalModel animal) {
         if (isNull(animal.getBreed())){
-            animal.setBreed("Undefined");
+            animal.setBreed("Unknown");
         }
         if (isNull(animal.getName())){
-            animal.setName("Undefined");
+            animal.setName("No name");
         }
         return animalRepository.save(animal);
     }
