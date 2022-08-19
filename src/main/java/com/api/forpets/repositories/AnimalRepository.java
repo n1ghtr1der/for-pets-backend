@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AnimalRepository extends JpaRepository<AnimalModel, Long> {
-    void deleteByAnimalId(Long id);
+    void deleteById(Long id);
     List<AnimalModel> findBySpecie(AnimalSpecieEnum specie);
-    List<AnimalModel> findByWeight(double weight);
+    List<AnimalModel> findByWeightIsBetween(double min, double max);
 }
