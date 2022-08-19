@@ -17,6 +17,8 @@ public class AnimalModel implements Serializable {
     private String name;
     @Column(length = 30)
     private  String breed;
+    @Column(length = 20)
+    private String type;
     @Column(nullable = false)
     @NotNull(message = "Weight can't be null!")
     private double weight;
@@ -58,6 +60,14 @@ public class AnimalModel implements Serializable {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getWeight() {
