@@ -1,4 +1,4 @@
-package com.api.forpets.models.enums;
+package com.api.forpets.models;
 
 public enum AnimalGenderEnum {
     FEMALE("Female"),

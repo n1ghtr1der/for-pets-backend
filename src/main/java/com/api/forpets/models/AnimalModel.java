@@ -1,13 +1,17 @@
 package com.api.forpets.models;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-
 @Entity
 @Table(name = "TB_ANIMAL")
+@SQLDelete(sql = "UPDATE tb_animal SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class AnimalModel implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,6 +33,8 @@ public class AnimalModel implements Serializable {
     private Date dateOfBirth;
     @Column(nullable = false)
     private Boolean vaccinated;
+    @Column
+    private boolean deleted = Boolean.FALSE;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private AnimalGenderEnum gender;
@@ -94,6 +100,14 @@ public class AnimalModel implements Serializable {
 
     public Boolean getVaccinated() {
         return vaccinated;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public void setVaccinated(Boolean vaccinated) {
