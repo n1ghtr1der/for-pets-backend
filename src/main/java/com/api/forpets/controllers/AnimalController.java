@@ -39,6 +39,15 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.OK).body(animalService.findByWeight(start, end));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getAnimalById(@PathVariable(value = "id") Long id) {
+        Optional<AnimalModel> animalModelOptional = animalService.findById(id);
+        if (!animalModelOptional.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Animal ID Not Found! Try again.");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(animalModelOptional.get());
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteAnimal(@PathVariable(value = "id") Long id) {
         Optional<AnimalModel> animalModelOptional = animalService.findById(id);
