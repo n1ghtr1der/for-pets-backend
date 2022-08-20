@@ -31,11 +31,9 @@ public class AnimalModel implements Serializable {
     private Boolean vaccinated;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Gender is necessary!")
     private AnimalGenderEnum gender;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    @NotBlank(message = "Specie is necessary!")
     private AnimalSpecieEnum specie;
 
     public Long getId() {

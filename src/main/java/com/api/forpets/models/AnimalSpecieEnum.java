@@ -1,4 +1,4 @@
-package com.api.forpets.models;
+package com.api.forpets.models.enums;
 
 public enum AnimalSpecieEnum {
     BIRD("Bird"),
