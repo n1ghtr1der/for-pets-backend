@@ -39,7 +39,7 @@ public class AnimalController {
         return ResponseEntity.status(HttpStatus.OK).body(animalService.findByWeight(start, end));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("show/{id}")
     public ResponseEntity<Object> getAnimalById(@PathVariable(value = "id") Long id) {
         Optional<AnimalModel> animalModelOptional = animalService.findById(id);
         if (!animalModelOptional.isPresent()) {
