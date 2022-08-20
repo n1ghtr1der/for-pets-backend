@@ -12,5 +12,5 @@ import java.util.List;
 public interface AnimalRepository extends JpaRepository<AnimalModel, Long> {
     void deleteById(Long id);
     List<AnimalModel> findBySpecie(AnimalSpecieEnum specie);
-    List<AnimalModel> findByWeightIsBetween(double min, double max);
+    List<AnimalModel> findByWeightBetween(double start, double max);
 }

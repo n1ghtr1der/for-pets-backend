@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Objects.isNull;
 
@@ -20,14 +21,14 @@ public class AnimalService {
     }
 
     @Transactional(rollbackFor = {Exception.class, Throwable.class})
-    public AnimalModel addAnimal(AnimalModel animal) {
-        if (isNull(animal.getBreed())){
-            animal.setBreed("Unknown");
+    public AnimalModel addAnimal(AnimalModel animalModel) {
+        if (isNull(animalModel.getBreed())){
+            animalModel.setBreed("Unknown");
         }
-        if (isNull(animal.getName())){
-            animal.setName("No name");
+        if (isNull(animalModel.getName())){
+            animalModel.setName("No name");
         }
-        return animalRepository.save(animal);
+        return animalRepository.save(animalModel);
     }
 
     @Transactional(readOnly = true)
@@ -39,8 +40,12 @@ public class AnimalService {
         return animalRepository.findBySpecie(AnimalSpecieEnum.valueOf(specie));
     }
 
-    public List<AnimalModel> findByWeight(double min, double max) {
-        return animalRepository.findByWeightIsBetween(min, max);
+    public List<AnimalModel> findByWeight(double start, double end) {
+        return animalRepository.findByWeightBetween(start, end);
+    }
+
+    public Optional<AnimalModel> findById(Long id) {
+        return animalRepository.findById(id);
     }
 
     @Transactional(rollbackFor = {Exception.class, Throwable.class})
