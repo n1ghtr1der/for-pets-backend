@@ -1,4 +1,7 @@
 spring:
+  web:
+    locale: pt-BR
+    locale-resolver: fixed
   jpa:
     database: POSTGRESQL
     show-sql: true
