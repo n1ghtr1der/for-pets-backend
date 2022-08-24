@@ -1,5 +1,6 @@
 package com.api.forpets.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -30,6 +31,7 @@ public class AnimalModel implements Serializable {
     @NotBlank(message = "Image URL is necessary.")
     private String imageURL;
     @Column
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
     @Column(nullable = false)
     private Boolean vaccinated;
