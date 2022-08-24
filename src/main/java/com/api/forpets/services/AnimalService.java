@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-
-import static java.util.Objects.isNull;
 
 
 @Service
@@ -22,10 +21,10 @@ public class AnimalService {
 
     @Transactional(rollbackFor = {Exception.class, Throwable.class})
     public AnimalModel addAnimal(AnimalModel animalModel) {
-        if (isNull(animalModel.getBreed())){
+        if (Objects.equals(animalModel.getBreed(), "")){
             animalModel.setBreed("Unknown");
         }
-        if (isNull(animalModel.getName())){
+        if (Objects.equals(animalModel.getName(), "")){
             animalModel.setName("No name");
         }
         return animalRepository.save(animalModel);
