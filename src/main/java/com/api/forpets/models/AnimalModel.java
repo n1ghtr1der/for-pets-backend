@@ -1,6 +1,7 @@
 package com.api.forpets.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -8,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 @Entity
 @Table(name = "TB_ANIMAL")
@@ -31,7 +34,8 @@ public class AnimalModel implements Serializable {
     @NotBlank(message = "Image URL is necessary.")
     private String imageURL;
     @Column
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonSerialize(as = Date.class)
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone = "America/Sao_Paulo")
     private Date dateOfBirth;
     @Column(nullable = false)
     private Boolean vaccinated;
