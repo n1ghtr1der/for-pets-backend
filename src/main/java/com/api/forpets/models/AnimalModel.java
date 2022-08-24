@@ -35,7 +35,7 @@ public class AnimalModel implements Serializable {
     private String imageURL;
     @Column
     @JsonSerialize(as = Date.class)
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone = "America/Sao_Paulo")
     private Date dateOfBirth;
     @Column(nullable = false)
     private Boolean vaccinated;
