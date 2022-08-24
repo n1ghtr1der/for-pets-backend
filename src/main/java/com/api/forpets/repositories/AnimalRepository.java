@@ -7,10 +7,12 @@ import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AnimalRepository extends JpaRepository<AnimalModel, Long> {
     void deleteById(Long id);
     List<AnimalModel> findBySpecie(AnimalSpecieEnum specie);
     List<AnimalModel> findByWeightBetween(double start, double max);
+    Optional<AnimalModel> findById(Long id);
 }
